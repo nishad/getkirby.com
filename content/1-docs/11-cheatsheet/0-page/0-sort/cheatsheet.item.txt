@@ -1,6 +1,6 @@
 Title:
 
-{{class.instance}}->sort($num)
+{{class.instance}}->sort($num = null)
 
 ----
 
