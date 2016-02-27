@@ -41,3 +41,6 @@ try {
 }
 
 ```
+
+## No parameter
+If the parameter `$num` is not specified, the result of [`$page->num()`](num) will be returned instead.
