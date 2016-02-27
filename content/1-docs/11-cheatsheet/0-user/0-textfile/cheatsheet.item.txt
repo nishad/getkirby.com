@@ -1,6 +1,6 @@
 Title:
 
-$user->textfile()
+{{class.instance}}->textfile()
 
 ----
 
