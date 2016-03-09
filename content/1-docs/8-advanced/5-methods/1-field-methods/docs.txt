@@ -35,7 +35,7 @@ The new way keeps the templates cleaner and is more readable and easier to write
 
 ## Getting started
 
-You can extend the set of defined field methods very easily. The best place to do this is in a plugin file: `/site/plugins/methods.php`
+You can extend the set of defined field methods very easily. The best place to do this is in a plugin file: `/site/plugins/field-methods.php`
 
 ```php
 field::$methods['quote'] = function($field) {

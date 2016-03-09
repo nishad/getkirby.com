@@ -1,0 +1,7 @@
+Title: Custom methods
+
+----
+
+Description: Learn how to easily build your own custom methods
+
+----
