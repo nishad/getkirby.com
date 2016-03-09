@@ -108,3 +108,6 @@ return function($site, $pages, $page, $args) {
 
 };
 ```
+
+## Default controller
+Since version 2.3 you can have a default page controller. Just add it as `site/controllers/site.php` - it works like a normal page controller. Be aware that the default controller only works as a fallback if no specific page controller for the template exists. It is not loaded in addition to the template-specific one.
