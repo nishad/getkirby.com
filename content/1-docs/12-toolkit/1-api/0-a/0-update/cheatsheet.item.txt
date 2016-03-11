@@ -1,0 +1,28 @@
+Title: a::update
+
+----
+
+Excerpt: Updates an array with a second array
+
+----
+
+Call: a::update($array, $update)
+
+----
+
+Return: type: array
+text:
+
+----
+
+Params: - 
+  name: $array
+  type: array
+  text:
+- 
+  name: $update
+  type: array
+  text:
+  
+## Callbacks
+he second parameter `$update` can be an array containing callbacks as values, which will get the original values as argument.
