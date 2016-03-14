@@ -53,6 +53,7 @@ The index option gives you full control over displayed suggestions, while the us
 
 #### Available options:
 
+- index: self
 - index: siblings
 - index: template
 - index: children
