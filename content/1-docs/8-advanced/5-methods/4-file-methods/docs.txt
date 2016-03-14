@@ -22,7 +22,7 @@ You can extend the set of defined file methods very easily. The best place to do
 
 ```php
 file::$methods['soShiny'] = function($file) {
-  return 'Everthing so shiny: <a href="' . $file->url() . '">' . $file->filename() . '</a>';
+  return 'Everything so shiny: <a href="' . $file->url() . '">' . $file->filename() . '</a>';
 };
 ```
 
@@ -40,6 +40,6 @@ The definition for such a method with arguments is very simple:
 
 ```php
 file::$methods['soSomething'] = function($file, $adjective) {
-    return 'Everthing so ' . $adjective . ': <a href="' . $file->url() . '">' . $file->filename() . '</a>';
+    return 'Everything so ' . $adjective . ': <a href="' . $file->url() . '">' . $file->filename() . '</a>';
 };
 ```

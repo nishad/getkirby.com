@@ -13,22 +13,21 @@ Since version 2.3
 (toc)
 
 
+## Custom page methods vs. page models
 
-## Custom page methods vs. Page models
-
-(link: docs/templates/models text: Page models) are a great way to create an extended version of the default page object with additional methods and functionalities. But a page model is tied to a specific template, while custom page methods apply to all page objects. If your use case is based on one specific template, a page model might be the better solution. If you have one methods that should be available for all page objects in all templates, a custom page method is the way to go.
+(link: docs/templates/models text: Page models) are a great way to create an extended version of the default page object with additional methods and functionalities. But a page model is tied to a specific template, while custom page methods apply to all page objects. If your use case is based on one specific template, a page model might be the better solution. If you have methods that should be available for all page objects in all templates, a custom page method is the way to go.
 
 ## Default page methods
 
-**For a full (link: docs/cheatsheet/#page text: list of default page methods), please check out the cheat sheet.** Be aware that - contrary to (link: docs/templates/models text: page models) - custom page methods cannot override these default page methods with.
+**For a full (link: docs/cheatsheet/#page text: list of default page methods), please check out the cheat sheet.** Be aware that - contrary to (link: docs/templates/models text: page models) - custom page methods cannot override default page methods.
 
 ## Getting started
 
 You can extend the set of defined page methods very easily. The best place to do this is in a plugin file: `/site/plugins/page-methods.php`
 
 ```php
-page::$methods['visibleChildren'] = function($page) {
-  return $page->children()->visible();
+page::$methods['linktag'] = function($page) {
+  return '<a href="' . $page->url() . '">' . $page->title()->html() . '</a>';
 };
 ```
 
@@ -41,14 +40,8 @@ There are two common scenarios, what page methods can do:
 ### 1. Modifying the page
 
 ```php
-page::$methods['setColor'] = function($page) {
-    try {
-      $page->update(array(
-        'color' => '#ff00b2',
-      ));
-    } catch(Exception $e) {
-      echo $e->getMessage();
-    }
+page::$methods['likeIt'] = function($page) {
+    $page->increment('like');
 
     return $page;
 };
@@ -58,14 +51,14 @@ If you want to make it possible to chain page methods and that the page can be f
 #### Example
 
 ```php
-<?php echo $page->setColor()->hide() ?>
+<?php echo $page->likeIt()->hide() ?>
 ```
 
 ### 2. Returning info about the page
 
 ```php
-page::$methods['countSiblings'] = function($page) {
-    return $page->siblings()->count();
+page::$methods['has5Siblings'] = function($page) {
+    return $page->siblings()->count() == 5;
 };
 ```
 
@@ -74,8 +67,8 @@ Page methods can also be used to make if clauses easier.
 #### Example
 
 ```php
-<?php if($page->countSiblings() > 5) ?>
-The page has more than 5 siblings.
+<?php if($page->has5Siblings()) ?>
+The page has 5 siblings.
 <?php endif ?>
 ```
 

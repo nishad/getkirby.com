@@ -2,6 +2,6 @@ Title: Custom methods
 
 ----
 
-Description: Learn how to easily build your own custom methods
+Description: Learn how to extend the core objects with your own methods
 
 ----
