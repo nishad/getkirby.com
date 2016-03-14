@@ -66,7 +66,7 @@ text     | {{title}}    | A string to be used for the displayed option text. You
 flip     | false        | If true, the list of options will be reversed
 template | false        | A template name that will filter out all items with a different intended template
 
-### Option from other field
+### Option from other field (since: 2.3)
 
 Dynamic options can also be generated from the content of another field (source field):
 

@@ -12,7 +12,18 @@
 
     <section class="text col-4-6">
 
-      <?php if(!$page->params()->isEmpty() or !$page->return()->isEmpty()): ?>
+      <?php if($page->version()->isNotEmpty()): ?>
+        <p class="version-badge">
+          Introduced in
+          <?php if($changelog = page('changelog')->children()->filterBy('title', '*=', $page->version())->first()) : ?>
+            <a href="<?= $changelog->url() ?>">version <?= $page->version() ?></a>
+          <?php else: ?>
+            <span>version <?= $page->version() ?></span>
+          <?php endif ?>
+        </p>
+      <?php endif ?>
+
+      <?php if($page->params()->isNotEmpty() or $page->return()->isNotEmpty()): ?>
       <?php $params = $page->params()->yaml() ?>
       <?php $return = $page->return()->yaml() ?>
       <ul>
@@ -32,7 +43,7 @@
         <?php endif ?>
       </ul>
       <?php endif ?>
-      
+
       <?php if($page->hasInheritingParent() && $page->inheritingParent()->extendingMode() == 'inherits'): ?>
       <p class="zeta">This documentation entry is inherited from the <a href="<?php echo $page->parent()->url() ?>"><?php echo ($class = $page->parent()->class())? $class : $page->parent()->title() ?> class</a>.</p>
       <?php endif ?>

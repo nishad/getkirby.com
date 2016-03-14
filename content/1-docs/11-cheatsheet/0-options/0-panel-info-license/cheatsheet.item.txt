@@ -6,6 +6,10 @@ Excerpt: Show/Hide Kirby license information in the Panel.
 
 ----
 
+Version: 2.2
+
+----
+
 Text: 
 
 ## Default value

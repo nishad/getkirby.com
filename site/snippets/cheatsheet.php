@@ -1,6 +1,6 @@
 <main class="main" role="main">
 
-  <h1 class="alpha"><?php echo html($page->title()) ?></h1>
+  <h1 class="alpha"><?=$page->title()->html() ?></h1>
 
   <section class="text">
     <h2 class="beta">Table of contents</h2>
@@ -8,8 +8,8 @@
       <?php foreach($page->children()->visible() as $child): ?>
       <div class="cheatsheet-grid-item">
         <h3 class="gamma">
-          <a href="#<?php echo $child->uid() ?>">
-            <?php echo html($child->title()) ?>
+          <a href="#<?= $child->uid() ?>">
+            <?= $child->title()->html() ?>
           </a>
         </h3>
       </div>
@@ -18,19 +18,24 @@
   </section>
 
   <?php foreach($page->children()->visible() as $child): ?>
-  <section class="text" id="<?php echo $child->uid() ?>">
-    <h2 class="beta no-margin-bottom"><?php echo html($child->title()) ?></h2>
+  <section class="text" id="<?= $child->uid() ?>">
+    <h2 class="beta no-margin-bottom"><?= $child->title()->html() ?></h2>
     <?php if($extendingMode = $child->extendingModeLink()): ?>
-      <div class="zeta subtitle"><?php echo $extendingMode ?></div>
+      <div class="zeta subtitle"><?= $extendingMode ?></div>
     <?php endif ?>
-    <?php echo kirbytext($child->text()) ?>
+    <?= $child->text()->kirbytext() ?>
 
     <div class="cheatsheet-grid">
       <?php foreach($child->inheritedChildren() as $doc): ?>
       <div class="cheatsheet-grid-item">
-        <a href="<?php echo $doc->url($child) ?>">
-          <h3 class="gamma"><?php echo html($doc->title($child)) ?></h3>
-          <?php echo kirbytext($doc->excerpt()) ?>
+        <a href="<?= $doc->url($child) ?>">
+          <h3 class="gamma">
+            <?= $doc->title($child)->html() ?>
+            <?php if($doc->version() == str_replace('Kirby ', '', page('changelog')->children()->last()->title())) : ?>
+              <div class="version-badge">new</div>
+            <?php endif ?>
+          </h3>
+          <?= $doc->excerpt()->kirbytext() ?>
         </a>
       </div>
       <?php endforeach ?>

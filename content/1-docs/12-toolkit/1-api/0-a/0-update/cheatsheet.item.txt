@@ -11,6 +11,10 @@ text:
 
 ----
 
+Version: 2.3
+
+----
+
 Params: -
   name: $array
   type: array

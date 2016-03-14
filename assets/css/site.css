@@ -806,6 +806,41 @@ code.language-css {
   color: #ae5715; }
 
 /*
+ :::  Version Badges
+-------------------------------------------------- */
+.version-badge {
+  display: inline-block;
+  background-color: #999;
+  color: #fff;
+  padding: 1px 5px;
+  border-radius: 15px;
+  font-size: .75em; }
+
+.version-badge a {
+  color: inherit; }
+  .version-badge a:hover {
+    text-decoration: none;
+    border: none; }
+
+.cheatsheet-grid .version-badge {
+  background-color: red; }
+
+.text .version-badge {
+  padding: 3px 8px;
+  line-height: 1;
+  margin-left: 5px;
+  margin-right: 5px; }
+
+h1 .version-badge,
+h2 .version-badge {
+  font-size: .45em; }
+
+h3 .version-badge,
+h4 .version-badge,
+h5 .version-badge {
+  font-size: .55em; }
+
+/*
  :::  Beta Message
 -------------------------------------------------- */
 .message {

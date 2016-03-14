@@ -2,7 +2,7 @@ Title: {{class.instance}}->isTranslated($lang = null)
 
 ----
 
-Excerpt: Checks if the field is translated in the current/specified language 
+Excerpt: Checks if the field is translated in the current/specified language
 
 ----
 
@@ -10,6 +10,10 @@ Return:
 
 type: boolean
 text:
+
+----
+
+Version: 2.3
 
 ----
 
