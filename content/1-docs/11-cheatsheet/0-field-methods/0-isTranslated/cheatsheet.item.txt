@@ -15,7 +15,7 @@ text:
 
 Text:
 
-A field value is considered as translated if it is not empty and is not equal to the field value of the default language. `{{class.instance}}->isTranslated()` will always return `true` for the default language as well as for single language setups.
+A field value is considered as translated if it is not empty and is not equal to the field value of the default language. `$field->isTranslated()` will always return `true` for the default language as well as for single language setups.
 
 ## Example
 
