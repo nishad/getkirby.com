@@ -42,4 +42,8 @@ class SinceVersion {
 
   }
 
+  public static function removeTag($string) {
+    return preg_replace('!<div class="since-badge">(.*?)</div>!', '', $string);
+  }
+
 }

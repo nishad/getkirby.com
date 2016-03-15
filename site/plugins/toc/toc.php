@@ -10,6 +10,10 @@ kirbytext::$post[] = function($kirbytext, $value) {
     $ul->addClass('toc');
 
     foreach($matches[1] as $match) {
+
+      // remove since version tags
+      $match = SinceVersion::removeTag($match);
+
       $li = brick('li', '<a href="#' . str::slug($match) . '">' . $match . '</a>');
       $ul->append($li);
     }

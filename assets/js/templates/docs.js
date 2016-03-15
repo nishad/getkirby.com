@@ -1,1 +1,1 @@
-$(".text h2, .text h3").each(function(){var t=$(this).text().replace(/[\-\[\]\/\{\}\(\)\*\+\?\!\.\,\=\\\^\$\'\&\%\|]/g,"").replace(/\s/g,"-");$(this).attr("id",t.toLowerCase())});
+$(".text h2, .text h3").each(function(){var e=$(this).html();e=e.replace(/(\s<div class="since-badge">(.*?)<\/div>)/gi,""),e=e.replace(/[\-\[\]\/\{\}\(\)\*\+\?\!\.\,\=\\\^\$\'\&\%\|]/g,"").replace(/\s/g,"-"),$(this).attr("id",e.toLowerCase())});
