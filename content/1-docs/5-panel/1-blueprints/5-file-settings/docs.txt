@@ -28,7 +28,7 @@ files:
 …
 ```
 
-## File limits
+## File limits (since: 2.1)
 
 Sometimes you only want specific file type to be uploaded to a certain template. To restrict panel users to upload other types, you can add a `type` field to the file's meta data in the blueprint. Please check out the (link: docs/cheatsheet/file/type text: list of all available file types).
 
@@ -106,7 +106,7 @@ files:
   hide: true
 ```
 
-## Sanitization
+## Sanitization (since: 2.1)
 
 Kirby's file uploader automatically sanitizes filenames to avoid broken links due to special characters in filenames. You can switch this off now in your blueprints with the sanitization option:
 

@@ -8,9 +8,7 @@ Description: Learn how to react to Panel events with custom hooks in order to ex
 
 Text: 
 
-## Requirements
-
-Hooks are available since Kirby 2.1. Make sure to update before you use them.
+(since: 2.1 label: Introduced in tag: p)
 
 ## Available hooks
 
