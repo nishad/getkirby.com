@@ -6,6 +6,8 @@ $('.text h2, .text h3').each(function() {
   // remove since version tags
   anchor = anchor.replace(/(\s<div class="since-badge">(.*?)<\/div>)/ig,'');
 
-  anchor = anchor.replace(/[\-\[\]\/\{\}\(\)\*\+\?\!\.\,\=\\\^\$\'\&\%\|]/g, '').replace(/\s/g,'-');
+  anchor = anchor.replace(/[\-\[\]\/\{\}\(\)\*\+\?\!\.\,\;\=\\\^\$\'\&\%\|]/g, '').replace(/\s/g,'-');
+  console.log(anchor);
+
   $(this).attr('id',anchor.toLowerCase());
 });
