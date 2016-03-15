@@ -6,7 +6,7 @@ Excerpt: Show/hide Kirby/Panel/Toolkit version information in the panel.
 
 ----
 
-Version: 2.2
+Since: 2.2
 
 ----
 

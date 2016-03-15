@@ -43,4 +43,4 @@ fields:
       web: Web
 ```
 
-(cheatsheet: field-options field: select)
+(docs: panel-field-options field: select)

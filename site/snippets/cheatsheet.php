@@ -31,9 +31,7 @@
         <a href="<?= $doc->url($child) ?>">
           <h3 class="gamma">
             <?= $doc->title($child)->html() ?>
-            <?php if($doc->version() == str_replace('Kirby ', '', page('changelog')->children()->last()->title())) : ?>
-              <div class="version-badge">new</div>
-            <?php endif ?>
+            <?= SinceVersion::highlightingBadge($doc->since()) ?>
           </h3>
           <?= $doc->excerpt()->kirbytext() ?>
         </a>

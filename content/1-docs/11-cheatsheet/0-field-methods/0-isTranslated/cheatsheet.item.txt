@@ -13,7 +13,7 @@ text:
 
 ----
 
-Version: 2.3
+Since: 2.3
 
 ----
 

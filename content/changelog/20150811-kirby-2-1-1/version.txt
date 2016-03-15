@@ -2,6 +2,10 @@ Title: Kirby 2.1.1
 
 ----
 
+Version: 2.1.1
+
+----
+
 Date: 2015-08-11
 
 ----
@@ -34,5 +38,3 @@ You can find **(link: docs/installation/updates text: detailed instructions on h
 ## Contact
 
 For further questions please don't hesitate to send an email at: <support@getkirby.com>
-
-

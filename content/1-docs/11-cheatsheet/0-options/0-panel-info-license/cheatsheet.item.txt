@@ -6,7 +6,7 @@ Excerpt: Show/Hide Kirby license information in the Panel.
 
 ----
 
-Version: 2.2
+Since: 2.2
 
 ----
 

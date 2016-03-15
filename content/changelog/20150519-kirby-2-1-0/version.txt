@@ -2,6 +2,10 @@ Title: Kirby 2.1.0
 
 ----
 
+Version: 2.1.0
+
+----
+
 Date: 2015-05-19
 
 ----
@@ -512,4 +516,3 @@ $page->text()->excerpt(100, 'words');
 - Improved invalid() method
 - Fixed database::dropTable() method
 - Better handling of HTML attribute data escaping
-

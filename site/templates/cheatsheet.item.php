@@ -12,36 +12,27 @@
 
     <section class="text col-4-6">
 
-      <?php if($page->version()->isNotEmpty()): ?>
-        <p class="version-badge">
-          Introduced in
-          <?php if($changelog = page('changelog')->children()->filterBy('title', '*=', $page->version())->first()) : ?>
-            <a href="<?= $changelog->url() ?>">version <?= $page->version() ?></a>
-          <?php else: ?>
-            <span>version <?= $page->version() ?></span>
-          <?php endif ?>
-        </p>
-      <?php endif ?>
+      <?= SinceVersion::kirbytext($page->since()) ?>
 
       <?php if($page->params()->isNotEmpty() or $page->return()->isNotEmpty()): ?>
-      <?php $params = $page->params()->yaml() ?>
-      <?php $return = $page->return()->yaml() ?>
-      <ul>
-        <?php foreach($params as $param): ?>
-        <li>
-          <strong><?php echo $param['name'] ?></strong> (<?php echo $param['type'] ?>)<br />
-          <em><?php echo $param['text'] ?></em>
-        </li>
-        <?php endforeach ?>
-        <?php if(!empty($return)): ?>
-        <li>
-          <strong>return </strong> (<?php echo $return['type'] ?>)<br />
-          <?php if(isset($return['text'])): ?>
-          <em><?php echo $return['text'] ?></em>
+        <?php $params = $page->params()->yaml() ?>
+        <?php $return = $page->return()->yaml() ?>
+        <ul>
+          <?php foreach($params as $param): ?>
+          <li>
+            <strong><?php echo $param['name'] ?></strong> (<?php echo $param['type'] ?>)<br />
+            <em><?php echo $param['text'] ?></em>
+          </li>
+          <?php endforeach ?>
+          <?php if(!empty($return)): ?>
+          <li>
+            <strong>return </strong> (<?php echo $return['type'] ?>)<br />
+            <?php if(isset($return['text'])): ?>
+            <em><?php echo $return['text'] ?></em>
+            <?php endif ?>
+          </li>
           <?php endif ?>
-        </li>
-        <?php endif ?>
-      </ul>
+        </ul>
       <?php endif ?>
 
       <?php if($page->hasInheritingParent() && $page->inheritingParent()->extendingMode() == 'inherits'): ?>

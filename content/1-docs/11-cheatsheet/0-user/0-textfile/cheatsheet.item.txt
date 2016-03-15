@@ -17,6 +17,10 @@ text:
 
 ----
 
+Since: 2.3
+
+----
+
 Text:
 
 ## Example

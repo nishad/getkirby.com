@@ -8,7 +8,7 @@ A date and time picker field
 
 ----
 
-Version: 2.2
+Since: 2.2
 
 ----
 

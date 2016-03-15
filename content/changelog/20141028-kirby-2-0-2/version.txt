@@ -2,6 +2,10 @@ Title: Kirby 2.0.2
 
 ----
 
+Version: 2.0.2
+
+----
+
 Date: 28.10.2014
 
 ----
@@ -25,4 +29,3 @@ The security update is now available on **<http://download.getkirby.com>** and *
 Please read the (link: docs/installation/updates text: update instructions) for further help with this release.
 
 We are very sorry for not finding this hole earlier! Please get in contact if you've got questions about this release: <support@getkirby.com>
-

@@ -62,8 +62,8 @@ fields:
 ```
 
 
-(cheatsheet: field-options field: checkboxes)
-(cheatsheet: field-columns field: checkboxes)
+(docs: panel-field-options field: checkboxes)
+(docs: panel-field-columns field: checkboxes)
 
 
 ## In templates/snippets

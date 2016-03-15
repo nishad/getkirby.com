@@ -2,6 +2,10 @@ Title: Kirby 2.0.0 beta 2
 
 ----
 
+Version: 2.0.0 beta 2
+
+----
+
 Date: 08.08.2014
 
 ----
@@ -209,25 +213,3 @@ This is most probably the last beta round. Sascha and I will spend the next week
 I really can't wait for the last steps. The core and the panel are finally in a state I'm very comfortable with and I really hope you like it as well. It's all about refinements now and then we are ready to go. What a journey!
 
 Cheers, Bastian
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

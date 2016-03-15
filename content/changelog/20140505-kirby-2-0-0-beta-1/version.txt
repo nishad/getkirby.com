@@ -2,6 +2,10 @@ Title: Kirby 2.0.0 beta 1
 
 ----
 
+Version: 2.0.0 beta 1
+
+----
+
 Date: 05.05.2014
 
 ----
@@ -78,4 +82,3 @@ I already promised this a while ago. **Kirby 2 will be a free upgrade!** It does
 ## Feedback please :)
 
 Now it's your turn. Just give it a spin and let me know what you think — what you like, what you hate, what you expect for the official launch — anything!
-

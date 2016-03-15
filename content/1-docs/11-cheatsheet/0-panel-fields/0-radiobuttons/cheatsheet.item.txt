@@ -45,5 +45,5 @@ fields:
 To prevent preselection of a value, set `default: false`.
 
 
-(cheatsheet: field-options field: radio)
-(cheatsheet: field-columns field: radio)
+(docs: panel-field-options field: radio)
+(docs: panel-field-columns field: radio)

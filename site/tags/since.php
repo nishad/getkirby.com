@@ -2,18 +2,26 @@
 
 kirbytext::$tags['since'] = array(
   'attr' => [
-    'label'
+    'label',
+    'tag'
   ],
   'html' => function($tag) {
 
-    $label = empty($tag->attr('label')) ? 'since' : $tag->attr('label');
+    $version = $tag->attr('since');
+    $label   = empty($tag->attr('label')) ? 'since' : $tag->attr('label');
+    $tag     = empty($tag->attr('tag'))   ? 'div'   : $tag->attr('tag');
 
-    if($changelog = page('changelog')->children()->filterBy('title', '*=', $tag->attr('since'))->first()) {
-      return '<div class="version-badge"><span>' . $label . ' </span><a href="' . $changelog->url() . '">' . $tag->attr('since') . '</a></div>';
+    $html = '<' . $tag . ' class="since-badge">' . $label . ' ';
+
+    if($changelog = SinceVersion::findChangelog($version)) {
+      $html .= '<a href="' . $changelog->url() . '">Kirby ' . $version . '</a>';
     } else {
-      return '<div class="version-badge"><span>' . $label . ' </span>' . $tag->attr('since') . '</div>';
+      $html .= 'Kirby ' . $version;
     }
 
+    $html .= '</' . $tag . '>';
+
+    return $html;
 
   }
 );
