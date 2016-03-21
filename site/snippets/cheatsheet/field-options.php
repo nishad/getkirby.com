@@ -33,6 +33,21 @@ audio             | List of options with all (link: docs/cheatsheet/file/type te
 code              | List of options with all (link: docs/cheatsheet/file/type text: code files) of the page
 archives          | List of options with all (link: docs/cheatsheet/file/type text: archives) of the page
 
+#### Sorting dynamic options
+
+Using the `sort` option, you can sort dynamic options alphabetically:
+
+```
+fields:
+  category:
+    label: Category
+    type: <?= $field ?> 
+    default: architecture
+    options: children
+    sort: asc
+```
+
+The `sort` option accepts the values `asc` and `desc`.
 
 ### Option queries
 
@@ -64,7 +79,6 @@ fetch    | children     | See the list above for possible options
 value    | {{uid}}      | A string to be used for the value attribute. You can use {{varname}} for any object method from the passed object (page or file)
 text     | {{title}}    | A string to be used for the displayed option text. You can use {{varname}} for any object method from the passed object (page or file)
 flip     | false        | If true, the list of options will be reversed
-sort     | false        | Used to sort the options alphabetically; can be either 'asc' or 'desc'
 template | false        | A template name that will filter out all items with a different intended template
 
 ### Option from other field
