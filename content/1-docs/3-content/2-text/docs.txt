@@ -380,6 +380,7 @@ There are some fantastic Markdown Editors for Mac and PC, which you can use to e
 - Byword (<http://bywordapp.com>)
 - Marked (<http://markedapp.com>)
 - Write for Mac (<http://writeapp.net/mac/>)
+- MacDown (<https://macdown.uranusjr.com/>)
 
 ### For Windows:
 
