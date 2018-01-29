@@ -1,0 +1,42 @@
+Title: a::json
+
+----
+
+Excerpt: Converts an array to a JSON string It's basically a shortcut for json_encode()
+
+----
+
+Call: a::json($array)
+
+----
+
+Return: type: string
+text: The JSON string
+
+----
+
+Params: -
+  name: $array
+  type: array
+  text: The source array
+
+----
+Text:
+
+## Example
+
+```php
+$array = array(
+  'cat'  => 'miao',
+  'dog'  => 'wuff',
+  'bird' => 'tweet'
+);
+
+echo a::json($array);
+```
+
+Result:
+
+```json
+{"cat":"miao","dog":"wuff","bird":"tweet"}
+```

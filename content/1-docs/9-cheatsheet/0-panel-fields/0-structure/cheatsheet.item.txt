@@ -1,0 +1,193 @@
+Title: Structure
+
+----
+
+Excerpt:
+
+Structured data input, which stores data in a field as YAML.
+
+----
+
+Text:
+
+The structure field makes it possible to add multiple complex entries to a field, which will be stored as YAML. A typical use case would be a list of addresses or team members.
+
+## Example
+
+```
+fields:
+  addresses:
+    label: Addresses
+    type: structure
+    entry: >
+      {{street}}<br />
+      {{zip}} {{city}}
+    fields:
+      street:
+        label: Street
+        type: text
+      zip:
+        label: ZIP
+        type: text
+      city:
+        label: City
+        type: text
+```
+
+Such a structure will be stored in the content file like this:
+
+```
+addresses:
+-
+  street: Rue de WTF 17
+  zip:    1112
+  city:   Monaco
+-
+  street: 1212 Broadway
+  zip:    4321
+  city:   New York
+-
+  street: At the beach
+  zip:    9999
+  city:   The capitol of the Bahamas
+```
+
+## Fields
+
+You can define any number of fields and use the same (link: docs/cheatsheet#panel-fields text: field types listed). The only exception is a structure field nested in a structure field.
+
+## Entry template
+
+You can use the `entry` option to define how the entries will be displayed in the list view. The syntax for entry templates is very simple. Double curly brackets define a variable and will be replaced with the appropriate content.
+
+## Default values
+
+You can set default values for structure fields which will prepopulate the field:
+
+```
+  emails: 
+    label: Emails
+    type: structure
+    default: 
+      - email: bastian@getkirby.com
+      - email: sascha@getkirby.com
+      - email: nico@getkirby.com
+    fields: 
+      email: 
+        label: Email
+        type: email
+```
+
+## Table layout
+
+Instead of the default, card-based layout, you can display the items in a table:
+
+```
+emails:
+  label: Emails
+  type: structure
+  style: table
+```
+
+<since v="2.5.3">
+### Configuring the displayed columns
+
+Like in the default layout, it is possible to configure the displayed columns in the table style:
+
+```
+fields:
+  addresses:
+    label: Addresses
+    type: structure
+    style: table
+    entry:
+      - street
+      - city
+    fields:
+      street:
+        label: Street
+        type: text
+      zip:
+        label: ZIP
+        type: text
+      city:
+        label: City
+        type: text
+```
+
+It is also possible to resort the columns by configuring the `entry` option in a different order.
+</since>
+
+## Options
+  
+### Control the width of the structure modals
+
+Available widths are "small", "medium" or "large".
+  
+```
+emails:
+  label: Emails
+  type: structure
+  modalsize: small
+```
+
+### Don't allow changes
+
+```
+emails:
+  label: Emails
+  type: structure
+  readonly: true
+```
+
+<since v="2.3.2">
+### Limit number of items
+
+```
+emails:
+  label: Emails
+  type: structure
+  limit: 10
+```
+</since>
+
+<since v="2.5.0">
+### Sorting and flipping the displayed entries
+
+```
+fields:
+  addresses:
+    label: Addresses
+    type: structure
+    sort: zip, asc, street, asc
+    flip: true
+    entry: >
+      {{street}}<br />
+      {{zip}} {{city}}
+    fields:
+      street:
+        label: Street
+        type: text
+      zip:
+        label: ZIP
+        type: text
+      city:
+        label: City
+        type: text
+```
+
+If you use either sorting or flipping, manual sorting in the Panel is disabled.
+
+Please note that the order in which the items are stored in the content files is unaffected. These options only apply to the *display* order in the Panel.
+You can of course apply the same operations in your templates, which is a lot more reliable than relying on the order in the content file:
+
+```php
+<?php foreach($page->addresses()->toStructure()->sortBy('zip', 'asc', 'street', 'asc')->flip()): ?>
+...
+<?php endforeach ?>
+```
+</since>
+
+## Accessing structure fields in your templates
+ 
+To access a structure field in your templates, you can use the [`$field->yaml()`](../field-methods/yaml) and [`$field->toStructure()`](../field-methods/toStructure) methods.

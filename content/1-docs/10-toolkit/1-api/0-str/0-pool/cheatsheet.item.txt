@@ -1,0 +1,31 @@
+Title: str::pool
+
+----
+
+Excerpt: Get a character pool with various possible combinations
+
+----
+
+Call: str::pool($type, $array = true)
+
+----
+
+Return: type: string
+text:
+
+----
+
+Params: -
+  name: $type
+  type: string
+  text:
+-
+  name: $array
+  type: boolean
+  text:
+
+----
+
+Text:
+
+## Example

@@ -1,0 +1,34 @@
+Title: locale
+
+----
+
+Excerpt: Sets the global locale setting for PHP
+
+----
+
+Text: 
+
+## Default value
+
+```
+'en_US.UTF8'
+```
+
+## Example
+
+```php
+c::set('locale','en_US.utf-8');
+```
+
+## Detailed locale settings
+
+```php
+c::set('locale', array(
+  LC_COLLATE  => 'tr_TR.utf-8',
+  LC_MONETARY => 'tr_TR.utf-8',
+  LC_NUMERIC  => 'tr_TR.utf-8',
+  LC_TIME     => 'tr_TR.utf-8',
+  LC_MESSAGES => 'tr_TR.utf-8',
+  LC_CTYPE    => 'en_US.utf-8'
+));
+```

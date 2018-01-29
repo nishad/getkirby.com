@@ -1,0 +1,39 @@
+Title: str::startsWith
+
+----
+
+Excerpt: Checks if a string starts with the passed needle
+
+----
+
+Call: str::startsWith($string, $needle)
+
+----
+
+Return: type: boolean
+text:
+
+----
+
+Params: -
+  name: $string
+  type: string
+  text:
+-
+  name: $needle
+  type: string
+  text:
+
+----
+
+Text:
+
+## Example
+
+```php
+<?php
+$string = 'Kirby is a file-based CMS';
+if(str::startsWith($string, 'Kirby')) {
+  echo 'The string starts with "Kirby".';
+}
+```

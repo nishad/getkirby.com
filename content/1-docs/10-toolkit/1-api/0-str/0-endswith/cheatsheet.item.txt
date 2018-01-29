@@ -1,0 +1,39 @@
+Title: str::endsWith
+
+----
+
+Excerpt: Checks if a string ends with the passed needle
+
+----
+
+Call: str::endsWith($string, $needle)
+
+----
+
+Return: type: boolean
+text:
+
+----
+
+Params: -
+  name: $string
+  type: string
+  text:
+-
+  name: $needle
+  type: string
+  text:
+
+----
+
+Text:
+
+## Example
+
+```php
+<?php
+$string = 'Kirby is a file-based CMS';
+if(str::endsWith($string, 'CMS')) {
+  echo 'The string ends with "CMS".';
+}
+```

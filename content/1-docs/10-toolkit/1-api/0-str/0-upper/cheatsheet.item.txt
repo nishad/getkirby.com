@@ -1,0 +1,34 @@
+Title: str::upper
+
+----
+
+Excerpt: An UTF-8 safe version of strotoupper()
+
+----
+
+Call: str::upper($str)
+
+----
+
+Return: type: string
+text:
+
+----
+
+Params: -
+  name: $str
+  type: string
+  text:
+
+----
+
+Text:
+
+## Example
+
+```php
+<?php
+$string = 'kirby';
+echo str::upper($string);
+// 'KIRBY'
+```

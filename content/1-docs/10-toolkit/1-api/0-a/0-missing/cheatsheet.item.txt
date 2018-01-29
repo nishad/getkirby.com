@@ -1,0 +1,51 @@
+Title: a::missing
+
+----
+
+Excerpt: Checks if a given element is empty.
+
+----
+
+Call: a::missing($array, $required = array())
+
+----
+
+Return: type: array
+text: >
+  An array of empty fields. If this is
+  empty, nothing is missing.
+
+----
+
+Params: -
+  name: $array
+  type: array
+  text: The source array
+-
+  name: $required
+  type: array
+  text: An array of required keys
+
+----
+
+Text:
+
+This methods checks if an element is empty. And element is empty if the key does not exist or the value evaluates to false.
+
+## Example
+
+```php
+<?php
+
+$array = [
+  'cat' => 'miao',
+  'dog' => 'wuff',
+  'bird' => 'tweet',
+  'hippo' => null
+];
+
+$required = ['cat', 'elephant', 'hippo'];
+
+$missing = a::missing($array, $required);
+// missing: ['elephant', 'hippo'];
+```

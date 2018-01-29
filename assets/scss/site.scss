@@ -10,6 +10,7 @@
  :::  Components
 -------------------------------------------------- */
 @import "components/kirby";
+@import "components/awesomplete";
 
 /*
  :::  Intro [Home]
@@ -550,6 +551,9 @@ figure.slider-index {
   background-image: url(../images/docs.svg);
 }
 
+.docs-index-list li p.text.small {
+  font-size: 0.8rem;
+}
 
 
 /*
@@ -681,6 +685,14 @@ ul.toc {
   }
 }
 
+.submenu.filter ul {
+  margin-top: 1em;
+}
+.submenu.filter a {
+  border: none;
+  padding-bottom: 0;
+  font-weight: normal;
+}
 
 
 /*
@@ -832,6 +844,21 @@ input[type="search"]::-webkit-search-cancel-button {
   column-break-inside: avoid;
   display: table;
 }
+.cheatsheet-grid-item.future {
+  opacity: .5;
+  transition: opacity .3s;
+}
+.cheatsheet-grid-item.future:hover {
+  opacity: 1;
+}
+.cheatsheet-grid-item.future h3:after {
+  content: "beta";
+  font-size: .9em;
+  font-weight: normal;
+  color: red;
+  padding-left: .5rem;
+}
+
 @media screen and (min-width: 35em) {
   .cheatsheet-grid {
     -webkit-column-gap: 3em;
@@ -1232,23 +1259,43 @@ input[type="search"]::-webkit-search-cancel-button {
 .sponsors {
   text-align: center;
 }
+.sponsors-headline {
+  margin-bottom: 1.5rem;
+  color: #777;
+}
 .sponsors a {
-  display: inline-block;
   margin: .5em 1.5rem;
   text-align: center;
   color: #777;
   font-style: italic;
   vertical-align: middle;
   line-height: 1em;
+  display: block;
+  padding: .25rem 0;
 }
+@media screen and (min-width: 40em) {
+  .sponsors a {
+    padding: 0;
+    display: inline-block;
+  }
+}
+
 .sponsors img {
   height: 2.5em;
   vertical-align: middle;
   margin-left: .5em;
   padding-bottom: .35em;
 }
+.sponsors-algolia img {
+  height: 2.25em;
+  padding-top: .25rem;
+}
 .sponsors-imgix img {
-  height: 2.05em;
+  height: 2.3em;
+  padding-top: .25rem;
+}
+.sponsors-codetree img {
+  height: 2.25em;
 }
 
 
@@ -1277,11 +1324,308 @@ input[type="search"]::-webkit-search-cancel-button {
   right: 0;
   font-size: .7em;
 }
-.version-badge a, 
+.version-badge a,
 .version-badge span {
   border: 0;
   color: #777;
 }
 .version-badge a:hover {
   color: #000;
+}
+
+.upcoming-feature {
+  border: 1px solid #dedede;
+  padding: 1.5rem;
+  margin: 6rem 0 4.5rem;
+  opacity: .5;
+  transition: opacity .3s;
+}
+.upcoming-feature:hover {
+  opacity: 1;
+}
+.upcoming-feature:before {
+  position: absolute;
+  top: -3rem;
+  left: 0;
+  content: "Upcoming feature…";
+  font-weight: 600;
+  color: red;
+}
+.upcoming-feature *:last-child {
+  margin-bottom: 0;
+}
+.upcoming-feature .version-badge {
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+/*
+ :::  Search Page
+-------------------------------------------------- */
+.searchpage-query {
+  color: red;
+}
+.searchresults {
+  padding-bottom: 3rem;
+  overflow: hidden;
+}
+.searchresult {
+  border-bottom: 1px dashed #ddd;
+  padding: .75rem 0;
+  line-height: 1.25em;
+  white-space: nowrap;
+}
+.searchresult-headline {
+  font-size: 1rem;
+}
+.searchresult-meta {
+  color: #777;
+  font-weight: 300;
+}
+
+.searchpage .pagination {
+  position: relative;
+  padding: 0;
+}
+.searchpage .pagination span {
+  color: #999;
+}
+.searchpage .pagination .prev,
+.searchpage .pagination .next {
+  position: absolute;
+  top: 0;
+}
+.searchpage .pagination .count {
+  text-align: center;
+  color: #999;
+}
+.searchpage .pagination .next {
+  right: 0;
+}
+.searchsuggestions {
+  text-align: center;
+  line-height: 1.75em;
+  font-size: 1.15em;
+}
+.searchsuggestions:hover {
+  opacity: 1;
+}
+.searchsuggestions h2 {
+  font-size: 1em;
+}
+.searchsuggestions a {
+  border-bottom: 2px solid #ddd;
+}
+
+/*
+ :::  Quicksearch
+-------------------------------------------------- */
+.quicksearch {
+  position: relative;
+  display: none;
+}
+
+@media screen and (min-width: 52em) {
+  .quicksearch {
+    display: block;
+  }
+}
+
+.quicksearch input {
+  position: relative;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  border: 0;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: 400;
+  background: none;
+  height: 3rem;
+  display: none;
+  outline: none;
+  width: 8rem;
+}
+@media screen and (min-width: 55em) {
+  .quicksearch input {
+    width: 10rem;
+  }
+}
+@media screen and (min-width: 60em) {
+  .quicksearch input {
+    width: 15rem;
+  }
+}
+@media screen and (min-width: 65em) {
+  .quicksearch input {
+    width: 20rem;
+  }
+}
+@media screen and (min-width: 70em) {
+  .quicksearch input {
+    width: 22rem;
+  }
+}
+.quicksearch input:focus {
+  outline: none;
+}
+.quicksearch label {
+  display: block;
+  padding: 1em 0;
+  font-weight: 600;
+  z-index: 1;
+  cursor: pointer;
+}
+.quicksearch.has-focus label {
+  color: red;
+}
+
+.home .quicksearch input {
+  color: #fff;
+}
+
+
+/*
+ :::  Newsletter
+-------------------------------------------------- */
+.newsletter form {
+  font-size: 0;
+  padding: 3rem 0;
+  margin-left: -1.5rem;
+}
+.newsletter form p {
+  width: 100%;
+  display: inline-block;
+  font-size: 1rem;
+  padding-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.newsletter form label {
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: 600;
+}
+.newsletter form input {
+  width: 100%;
+  border: 2px solid #ddd;
+  padding: .5rem;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 1.5em;
+}
+.newsletter form input:focus {
+  border-color: #000;
+}
+.newsletter form button {
+  padding: .5rem;
+  line-height: 1.5em;
+  font-family: inherit;
+  font-size: inherit;
+  border: 2px solid #000;
+  background: #000;
+  color: #fff;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+}
+.newsletter form button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 45em) {
+  .newsletter form p {
+    width: 40%;
+    margin-bottom: 0;
+  }
+  .newsletter form p:last-child {
+    width: 20%;
+  }
+}
+
+/*
+ :::  Kosmos Columns
+-------------------------------------------------- */
+ul.columns {
+  margin: 2rem -2rem 0 0;
+  box-sizing: border-box;
+}
+.column {
+  display: inline-block;
+  vertical-align: top;
+  padding-right: 2rem;
+  width: 100%;
+}
+
+@media screen and (min-width: 36em) {
+  .columns-1 .column {
+    width: 100%;
+  }
+  .columns-2 .column {
+    width: 50%;
+  }
+  .columns-3 .column {
+    width: 33.33%;
+  }
+  .columns-4 .column {
+    width: 25%;
+  }
+  .columns-5 .column {
+    width: 20%;
+  }
+}
+
+/* Clients section */
+.clients {
+  overflow: hidden;
+  margin-bottom: 6em;
+}
+.clients .beta {
+  margin-bottom: .75rem;
+}
+.clients p {
+  font-style: italic;
+}
+.clients ul {
+  margin-left: -3rem;
+  font-size: 0;
+  padding-top: 3rem;
+}
+.clients li {
+  display: inline-block;
+  font-size: 1rem;
+  width: 33.33%;
+  opacity: .3;
+  padding-left: 3rem;
+  margin-bottom: 1.5rem;
+  vertical-align: middle;
+}
+
+@media screen and (min-width: 30em) {
+  .clients ul {
+    margin-left: -2rem;
+  }
+  .clients li {
+    width: 16.66%;
+    padding-left: 2rem;
+  }
+}
+
+
+.author {
+
+  padding: 3rem 0;
+
+  line-height: 1.5em;
+
+  img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+  } 
+
+  i {
+    color: #777;
+  }
 }

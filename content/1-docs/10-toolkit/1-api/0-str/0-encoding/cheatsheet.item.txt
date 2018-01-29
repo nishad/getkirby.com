@@ -1,0 +1,21 @@
+Title: str::encoding
+
+----
+
+Excerpt: Tries to detect the string encoding
+
+----
+
+Call: str::encoding($string)
+
+----
+
+Return: type: string
+text:
+
+----
+
+Params: -
+  name: $string
+  type: string
+  text:

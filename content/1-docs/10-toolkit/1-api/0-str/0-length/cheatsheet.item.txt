@@ -1,0 +1,34 @@
+Title: str::length
+
+----
+
+Excerpt: An UTF-8 safe version of strlen()
+
+----
+
+Call: str::length($str)
+
+----
+
+Return: type: string
+text:
+
+----
+
+Params: -
+  name: $str
+  type: string
+  text:
+
+----
+
+Text:
+
+## Example
+
+```php
+<?php
+$string = 'kirby';
+echo str::length($string);
+// 5
+```

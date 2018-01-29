@@ -23,6 +23,7 @@ In general, you are free to name your fields like you want to, but there are two
 1. You can only use alphanumeric characters and underscores in field names.
 2. If you use field names that are also used by native Kirby methods, your field names will conflict with Kirby's existing methods, e.g. if you give your field a name "image", it will conflict with Kirby's `$page->image()` method. You can do this, but you will have to call these fields differently in your templates, for details please refer to (link: docs/templates/hello-world text: the template docs)
 
+
 ## Required fields
 
 You can mark fields as required to make sure that your users have to fill in some data before the form gets submitted.
@@ -36,6 +37,32 @@ fields:
     type: textarea
     required: true
 ```
+
+
+## Default values
+
+Most fields can have a default value. Default values can be entered as simple text:
+
+```
+fields:
+  street:
+    label: Street
+    type: text
+    default: Sesamestreet 23
+```
+
+## Readonly fields
+
+To make a field readable but not editable by a user, you can use the `readonly` option. This can be useful if you auto-fill fields, either via a hook or a default value.
+
+```
+fields:
+  createdby:
+    label: User
+    type: user
+    readonly: true
+```
+
 
 ## Validation
 
@@ -53,6 +80,39 @@ fields:
 ```
 
 **You can find a (link: docs/cheatsheet/#validators text: list of all available validation methods) in the cheat sheet.**
+
+
+## Placeholders
+
+Most fields can show a placeholder text when the field is empty. This is a good option to guide users.
+
+### Example
+
+```
+fields:
+  street:
+    label: Street
+    type: text
+    placeholder: Please enter a street name…
+    icon: map-marker
+```
+
+
+## Field instructions
+Sometimes it is helpful to add some instrunctions to explain how a field is being used. You can add some helping words by including a `help:` line to your field specification in the blueprint, e.g.
+
+```
+fields:
+  name:
+    label: Name
+    type: text
+    validate:
+      min: 4
+      alphanum
+    help: Minimum of 4 characters required and only alphanumeric characters allowed.
+```
+
+Special characters (e.g. `&` or `<`) should be added with their character entity reference (e.g. `&amp;` or `&lt;`).
 
 
 ## Creating grids
@@ -99,27 +159,12 @@ The following column widths are available
 
 If you don't define a column width the field will span the entire width of the form
 
-## Field instructions
-Sometimes it is helpful to add some instrunctions to explain how a field is being used. You can add some helping words by including a `help:` line to your field specification in the blueprint, e.g.
-
-```
-fields:
-  name:
-    label: Name
-    type: text
-    validate:
-      min: 4
-      alphanum
-    help: Minimum of 4 characters required and only alphanumeric characters allowed. 
-```
-
-Special characters (e.g. `&` or `<`) should be added with their character entity reference (e.g. `&amp;` or `&lt;`).
 
 ## Custom icons
 
 Most fields can have custom icons, which are set by the `icon` parameter. Custom icons can help to make your forms easier to scan.
 
-Icons are provided by the (link: http://fontawesome.io/ text: fontawesome icon set). You can find a list of all available icons here: <http://fontawesome.io/icons></http:>
+Icons are provided by the (link: http://fontawesome.io/ text: fontawesome icon set). You can find a list of all available icons here: <http://fontawesome.io/icons>
 
 To define your custom icon, just search for the icon you'd like to add to a field and use its css selector without the `fa-` prefix
 
@@ -133,32 +178,6 @@ fields:
     icon: map-marker
 ```
 
-## Default values
-
-Most fields can have a default value. Default values can be entered as simple text:
-
-```
-fields:
-  street:
-    label: Street
-    type: text
-    default: Sesamestreet 23
-```
-
-## Placeholders
-
-Most fields can show a placeholder text when the field is empty. This is a good option to guide users.
-
-### Example
-
-```
-fields:
-  street:
-    label: Street
-    type: text
-    placeholder: Please enter a street name…
-    icon: map-marker
-```
 
 ## Translating form fields
 
@@ -167,16 +186,16 @@ If you have editors from various language backgrounds, you can translate labels,
 ### Labels, placeholders and help text
 
 ```
-fields: 
-  street: 
-    label: 
+fields:
+  street:
+    label:
       de: Straße
       en: Street
     type: text
-    placeholder: 
+    placeholder:
       de: Bitte geben Sie einen Straßennamen ein…
       en: Please enter a street name…
-    help: 
+    help:
       de: Der Name der Straße
       en: The name of the street
 ```
@@ -184,17 +203,17 @@ fields:
 ### Options
 
 ```
-fields: 
+fields:
   category:
       label:
         en: Category
-        de: Kategorie 
+        de: Kategorie
       type: select
-      options: 
-        architecture: 
+      options:
+        architecture:
           en: Architecture
           de: Architektur
-        photography: 
+        photography:
           en: Photography
           de: Fotografie
 ```
@@ -203,13 +222,14 @@ fields:
 ### Headlines
 
 ```
-fields: 
+fields:
   headline:
     label: headline
-    text: 
+    text:
       de: Optionen
       en: Options
 ```
+
 ## Prevent field values in non-default languages
 
 Sometimes, you  only want to set a value in the default language and prevent changes to the value in all non-default languages. You can do so by setting the `translate` option of a field to `false` (default is `true`).
@@ -222,5 +242,24 @@ fields:
     translate: false
 ```
 
-When set to `false`, the field will automatically be made read-only in all non-default languages. 
+When set to `false`, the field will automatically be made read-only in all non-default languages.
 
+Since Kirby 2.2.3, the contents of an untranslatable field will be emptied in all languages but the default language.
+
+<since v="2.5.3">
+## Optional field values in non-default languages
+
+Another possible value for the `translate` option is `optional`:
+
+```
+fields:
+  in_stock:
+    label: In stock
+    type: number
+    translate: optional
+```
+
+The Panel won't pre-fill the field with the value from the default language in this case.
+
+Your templates will still fall back to the default value however. You can use (sheet: field-methods/isTranslated) to check if that happened.
+</since>

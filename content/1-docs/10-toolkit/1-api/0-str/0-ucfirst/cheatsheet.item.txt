@@ -1,0 +1,40 @@
+Title: str::ucfirst
+
+----
+
+Excerpt: An UTF-8 safe version of ucfirst()
+
+----
+
+Call: str::ucfirst($string)
+
+----
+
+Return: type: string
+text:
+
+----
+
+Params: -
+  name: $string
+  type: string
+  text:
+
+----
+
+Text:
+
+## Example
+
+```php
+<?php
+$string = 'KIRBY IS A FILE-BASED CMS';
+$newStr = str::ucfirst($string);
+echo($newStr);
+```
+
+Result:
+
+```
+Kirby is a file-based cms
+```

@@ -1,0 +1,21 @@
+Title: header::redirect
+
+----
+
+Excerpt: Sends a redirect header
+
+----
+
+Call: header::redirect($url, $code = 302, $send = true)
+
+----
+
+Return: type: mixed
+text:
+
+----
+
+Params: - 
+  name: $send
+  type: boolean
+  text:

@@ -1,0 +1,54 @@
+Title:
+
+{{class.instance}}->search($query, $params = array())
+
+----
+
+Excerpt:
+
+Searches within all pages of the site
+
+----
+
+Return:
+
+type: $pages
+text:
+
+----
+
+Text:
+
+## Possible parameters/defaults
+
+```php
+$defaults = array(
+  'minlength' => 2,
+  'fields'    => array(),
+  'words'     => false,
+  'score'     => array()
+);
+```
+
+## Example
+
+
+```php
+// search the entire site
+$results = $site->search('my awesome search');
+
+// filter the search results
+$results = $site->search('my awesome search')->visible()->filterBy('template', 'article');
+
+// add pagination to the search results
+$results = $site->search('my awesome search')->paginate(20);
+
+// search in certain fields only
+$results = $site->search('my awesome search', 'title|text');
+
+// search for full words only
+$results = $site->search('my awesome->search', array('words' => true));
+
+// feed the search with a get parameter -> http://yourdomain.com/?q=awesome
+$results = $site->search(get('q'));
+```

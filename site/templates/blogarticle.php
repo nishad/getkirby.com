@@ -17,6 +17,7 @@
 
       <?php echo str_replace('(\\', '(', kirbytext($page->text())) ?>
 
+      <?php if($page->comments() != 'off'): ?>
       <?php if(server::get('SERVER_NAME') == 'getkirby.com'): ?>
         <?php if($page->date() > strtotime('2015-03-16')): ?>
         <div id="discourse-comments"></div>
@@ -38,6 +39,11 @@
         </section>
         <?php endif ?>
       <?php endif ?>
+      <?php endif ?>
+
+      <?php if($page->kosmos_subscription()->bool()) {
+        snippet('kosmos.subscription');
+      } ?>
 
     </div>
 

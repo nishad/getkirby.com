@@ -1,0 +1,38 @@
+Title: size($input)
+
+----
+
+Excerpt: Determines the size/length of numbers, strings, arrays and countable objects
+
+----
+
+Params: - 
+  name: $input
+  type: mixed
+  text:
+
+----
+
+Return:
+
+type: integer
+text:
+
+----
+
+Text:
+
+```php
+echo size('my awesome string');
+// will echo 17
+
+echo size(15);
+// will echo 15
+
+echo size(['a', 'b', 'c']);
+// will echo 3
+
+$collection = new Collection(['a', 'b', 'c']);
+echo size($collection);
+// will echo 3
+```

@@ -1,0 +1,29 @@
+Title: l::get
+
+----
+
+Excerpt:
+
+----
+
+Call: l::get($key = null, $data = null, $locale = null)
+
+----
+
+Return:
+
+----
+
+Params:
+
+
+----
+
+Example:
+
+```php
+l::set('some string', 'The {animal} is cute');
+
+l::get('some string', ['animal' => 'cat']);
+# -> The cat is cute
+```

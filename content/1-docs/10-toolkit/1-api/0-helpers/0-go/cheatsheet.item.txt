@@ -1,0 +1,42 @@
+Title: go($url = '/', $code = 302)
+
+----
+
+Excerpt: Redirects to a different URL
+
+----
+
+Params: - 
+  name: $url
+  type: string
+  text: Absolute or relative URL
+-
+  name: $code
+  type: int
+  text: HTTP status code like 301
+
+----
+
+Text:
+
+## Example
+
+### Simple internal redirect
+
+```php
+go('blog');
+```
+
+### External redirect
+
+```php
+go('http://getkirby.com');
+```
+
+<since v="2.3.2">
+### Permanent redirect
+
+```php
+go('blog', 301);
+```
+</since>

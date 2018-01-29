@@ -1,0 +1,233 @@
+Title: The Kirby extension registry
+
+----
+
+Since: 2.3.0
+
+----
+
+Text:
+
+Kirby's internal registry makes it possible to register templates, controllers, tags and more directly in your plugins. This means that you can build a full package of all kinds of plugin parts in a single directory.
+
+## Example
+
+```php
+// site/plugins/blog/blog.php
+$kirby->set('template',     'blog',     __DIR__ . '/templates/blog.php');
+$kirby->set('template',     'article',  __DIR__ . '/templates/article.php');
+$kirby->set('snippet',      'tagcloud', __DIR__ . '/snippets/tagcloud.php');
+$kirby->set('widget',       'articles', __DIR__ . '/widgets/articles');
+$kirby->set('tag',          'article',  […]);
+$kirby->set('page::method', 'tags',     function() {});
+```
+
+As you can see in this example of a blog plugin, the plugin can take care of registering all kinds of extensions, which will then be available in templates, controllers and even in the panel
+
+## List of registry extensions
+
+These are all possible registry extensions you can register this way:
+
+### blueprint
+
+```php
+// The blueprint file must exist at the given location
+$kirby->set('blueprint', 'article', __DIR__ . '/blueprints/article.yml');
+```
+
+User blueprints can be registered like this:
+
+```php
+$kirby->set('blueprint', 'users/admin', __DIR__ . '/blueprints/users/admin.yml');
+```
+
+<since v="2.3.1">
+Since Kirby 2.3.1, you can also register global field definitions:
+
+```php
+$kirby->set('blueprint', 'fields/title', __DIR__ . '/blueprints/fields/title.yml');
+```
+</since>
+
+<since v="2.3.2">
+If multiple blueprints use the same file, you can set them at once:
+
+```php
+$kirby->set('blueprint', ['article.text', 'article.video'], __DIR__ . '/blueprints/article.yml');
+```
+</since>
+
+### component
+
+```php
+// Make sure that the class is defined or can be autoloaded
+$kirby->set('component', 'thumb', 'MyNamespace\\MyThumbClass');
+```
+
+You can read more about components in (link: docs/developer-guide/plugins/components text: How to create a core component).
+
+### controller
+
+```php
+// The controller file must exist at the given location
+$kirby->set('controller', 'blog', __DIR__ . '/controllers/blog.php');
+
+// You can also pass a function directly
+$kirby->set('controller', 'blog', function($site, $pages, $page) {
+  // ...
+});
+```
+
+<since v="2.3.2">
+If multiple controllers use the same file/callback, you can set them at once:
+
+```php
+$kirby->set('controller', ['blog', 'archive'], __DIR__ . '/controllers/blog.php');
+```
+</since>
+
+### field
+
+```php
+// The directory must exist and it must have a PHP file with the same name in it
+$kirby->set('field', 'myfield', __DIR__ . '/fields/myfield');
+```
+
+### hook
+
+```php
+$kirby->set('hook', 'panel.page.create', function($page) {...});
+```
+
+This is an alternative syntax to [`kirby()->hook()`](/docs/developer-guide/advanced/hooks).
+
+<since v="2.3.2">
+If multiple hooks use the same callback, you can set them at once:
+
+```php
+$kirby->set('hook', ['panel.page.create', 'panel.page.update'], function($page) {...});
+```
+</since>
+
+### Extending Kirby objects
+
+There are the following registries to extend Kirby objects:
+
+- page::method
+- pages::method
+- file::method
+- files::method
+- site::method
+- field::method
+
+```php
+$kirby->set('page::method', 'linktag', function($page) {...});
+```
+
+This is an alternative syntax to directly adding the method to the object.
+(link: docs/developer-guide/objects text: Learn more about extending Kirby objects).
+
+<since v="2.3.2">
+If multiple methods use the same callback, you can set them at once:
+
+```php
+$kirby->set('page::method', ['linktag', 'lt'], function($page) {...});
+```
+</since>
+
+### Models
+
+There is currently only a registry for page models (page::model).
+
+```php
+// Make sure that the class is defined or can be autoloaded
+$kirby->set('page::model', 'article', 'MyNamespace\\ArticlePage');
+```
+
+<since v="2.3.2">
+If multiple models use the same callback, you can set them at once:
+
+```php
+$kirby->set('page::model', ['article.text', 'article.video'], 'MyNamespace\\ArticlePage');
+```
+</since>
+
+### option
+
+```php
+$kirby->set('option', 'cache', true);
+```
+
+This is an alternative syntax to `c::set()`, but this syntax can be used inside plugins.
+
+<since v="2.4.0">
+### role
+
+```php
+// The role file must exist at the given location
+$kirby->set('role', 'client', __DIR__ . '/roles/client.php');
+
+// You can also pass a role array directly
+$kirby->set('role', 'client', [
+  'name' => 'Client',
+  'permissions' => [
+    ...
+  ]
+]);
+```
+</since>
+
+### route
+
+```php
+$kirby->set('route', array(
+  'pattern' => 'my/awesome/url',
+  'action'  => function() {
+    // do something here when the URL matches the pattern above
+  }
+));
+```
+
+(link: docs/developer-guide/advanced/routing text: Learn more about routing).
+
+### snippet
+
+```php
+// The snippet file must exist at the given location
+$kirby->set('snippet', 'tagcloud', __DIR__ . '/snippets/tagcloud.php');
+```
+
+### tag
+
+```php
+$kirby->set('tag', 'wikipedia', array(
+  'html' => function($tag) {
+    return '<a href="http://wikipedia.org">Wikipedia</a>';
+  }
+));
+```
+
+This is an alternative syntax to `kirbytext::$tags[$name] = $tag`.
+(link: docs/developer-guide/kirbytext/tags text: Learn more about creating custom Kirbytags).
+
+### template
+
+```php
+// The template file must exist at the given location
+$kirby->set('template', 'article', __DIR__ . '/templates/article.php');
+```
+
+<since v="2.3.2">
+If multiple templates use the same file, you can set them at once:
+
+```php
+$kirby->set('template', ['article.text', 'article.video'], __DIR__ . '/templates/article.php');
+```
+</since>
+
+### widget
+
+```php
+// The directory must exist and it must have a PHP file with the same name in it
+$kirby->set('widget', 'mywidget', __DIR__ . '/widgets/mywidget');
+```

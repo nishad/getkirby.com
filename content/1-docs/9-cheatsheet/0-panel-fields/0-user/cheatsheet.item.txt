@@ -1,0 +1,46 @@
+Title: User
+
+----
+
+Excerpt:
+
+A user input field with autocompletion for registered users.
+
+----
+
+Text:
+
+The user field is a standard text field, which comes with built-in autocompletion for registered usernames and a custom user icon. It's perfect to store an author for an article for example.
+
+## Example
+
+```
+fields:
+  author:
+    label: Author
+    type: user
+```
+
+<since v="2.5.7">
+### Default values
+
+The default value of the user field is the current user. But you can change this default value to any existing user:
+
+```
+fields:
+  author:
+    label: Author
+    type: user
+    default: johndoe
+```
+
+You can also disable the default value completely. The default then is "no user":
+
+```
+fields:
+  author:
+    label: Author
+    type: user
+    default: false
+```
+</since>

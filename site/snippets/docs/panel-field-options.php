@@ -15,23 +15,26 @@ fields:
 
 #### Available option keywords
 
-Option            | Description
------------------ | -------------
-children          | List of options with all children
-grandchildren     | List of options with all grandchildren
-visibleChildren   | List of options with all visible children
-invisibleChildren | List of options with all invisible children
-visibleSiblings   | List of options with all visible siblings
-invisibleSiblings | List of options with all invisible siblings
-pages             | List of options with all pages of the site
-siblings          | List of options with all siblings
-files             | List of options with all files of the page
-images            | List of options with all (link: docs/cheatsheet/file/type text: images) of the page
-documents         | List of options with all (link: docs/cheatsheet/file/type text: documents) of the page
-videos            | List of options with all (link: docs/cheatsheet/file/type text: videos) of the page
-audio             | List of options with all (link: docs/cheatsheet/file/type text: audio files) of the page
-code              | List of options with all (link: docs/cheatsheet/file/type text: code files) of the page
-archives          | List of options with all (link: docs/cheatsheet/file/type text: archives) of the page
+Option                 | Description
+-----------------      | -------------
+children               | List of options with all children
+visibleChildren        | List of options with all visible children
+invisibleChildren      | List of options with all invisible children
+grandchildren          | List of options with all grandchildren
+visibleGrandchildren   | List of options with all visible grandchildren (added in 2.5.3)
+invisibleGrandchildren | List of options with all invisible grandchildren (added in 2.5.3)
+siblings               | List of options with all siblings
+visibleSiblings        | List of options with all visible siblings
+invisibleSiblings      | List of options with all invisible siblings
+index                  | List of options with all descendants
+pages                  | List of options with all pages of the site
+files                  | List of options with all files of the page
+images                 | List of options with all (link: docs/cheatsheet/file/type text: images) of the page
+documents              | List of options with all (link: docs/cheatsheet/file/type text: documents) of the page
+videos                 | List of options with all (link: docs/cheatsheet/file/type text: videos) of the page
+audio                  | List of options with all (link: docs/cheatsheet/file/type text: audio files) of the page
+code                   | List of options with all (link: docs/cheatsheet/file/type text: code files) of the page
+archives               | List of options with all (link: docs/cheatsheet/file/type text: archives) of the page
 
 
 ### Option queries
@@ -59,7 +62,7 @@ fields:
 
 Option   | Default      | Description
 -------- | ------------ | -----------
-page     | current page | Any page URI. This is a powerful way to fetch any kind of data from any other page. You can even use relative paths to step up levels in the hirarchy. For example: ../../ to go two levels up or / to get to the top level.
+page     | current page | Any page URI. This is a powerful way to fetch any kind of data from any other page. You can even use relative paths to step up levels in the hierarchy. For example: ../../ to go two levels up or / to get to the top level.
 fetch    | children     | See the list above for possible options
 value    | {{uid}}      | A string to be used for the value attribute. You can use {{varname}} for any object method from the passed object (page or file)
 text     | {{title}}    | A string to be used for the displayed option text. You can use {{varname}} for any object method from the passed object (page or file)
@@ -92,7 +95,7 @@ This works best for [tags fields](tags) as source fields.
 
 Option    | Default      | Description
 --------- | ------------ | -----------
-page      | current page | Any page URI. This is a powerful way to fetch any kind of data from any other page. You can even use relative paths to step up levels in the hirarchy. For example: ../../ to go two levels up or / to get to the top level.
+page      | current page | Any page URI. This is a powerful way to fetch any kind of data from any other page. You can even use relative paths to step up levels in the hierarchy. For example: ../../ to go two levels up or / to get to the top level.
 name      | tags         | Name of the source field
 separator | ,            | Separator by which the source field will be split up into the options
 
@@ -113,7 +116,7 @@ fields:
     options: http://example.com/api/categories.json
 ```
 
-The json must be have the following format:
+The json must have the following format:
 
 ```
 {
@@ -124,3 +127,19 @@ The json must be have the following format:
   "web": "Web"
 }
 ```
+
+<since v="2.5.0">
+You can also use relative URLs and get the options from the same site:
+
+```
+fields:
+  category:
+    label: Category
+    type: <?= $field ?> 
+    default: architecture
+    options: url
+    url: api/categories.json
+```
+
+Please note that the syntax is different as relative URLs are not detected automatically.
+</since>

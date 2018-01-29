@@ -1,0 +1,29 @@
+Title: url::unIdn
+
+----
+
+Since: 2.5.3
+
+----
+
+Excerpt: Converts a URL with an internationalized domain name to the machine-readable Punycode representation
+
+----
+
+Call: url::unIdn($url)
+
+----
+
+Return: type: string
+text: The converted URL
+
+----
+
+Params: - 
+  name: $url
+  type: string
+  text: The URL to be converted
+
+----
+
+Text: Please note that the conversion may fail for invalid URLs. In this case, this method will return the passed URL without any changes.

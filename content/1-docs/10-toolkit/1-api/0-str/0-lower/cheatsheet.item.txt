@@ -1,0 +1,35 @@
+Title: str::lower
+
+----
+
+Excerpt: An UTF-8 safe version of strtolower()
+
+----
+
+Call: str::lower($str)
+
+----
+
+Return: type: string
+text:
+
+----
+
+Params: -
+  name: $str
+  type: string
+  text:
+
+----
+
+Text:
+
+## Example
+
+```php
+<?php
+$string = 'KIRBY';
+echo str::lower($string);
+// 'kirby'
+
+```

@@ -1,5 +1,6 @@
 <?php if(c::get('stage')) go('docs') ?>
 <?php snippet('header') ?>
+<?php snippet('clients') ?>
 
 <main class="main" role="main">
 
@@ -93,7 +94,7 @@
     </ul>
   </section>
 
-  <section class="connect section last">
+  <section class="connect section">
     <h2 class="beta">Connect</h2>
     <ul class="list-2"><!--
    --><li>
@@ -116,6 +117,8 @@
       </li><!--
  --></ul>
   </section>
+
+  <?php snippet('kosmos.subscription') ?>
 
 </main>
 

@@ -1,0 +1,43 @@
+Title: Checkbox
+
+----
+
+Excerpt:
+
+A single checkbox field
+
+----
+
+Text:
+
+The checkbox field generates a single checkbox, which can be used for simple on/off fields. It's perfect when you need a toggle for a certain part of your template for example. Alternatively you can also use the Toggle field instead.
+
+## Example
+
+```
+fields:
+  header:
+    label: Header
+    type: checkbox
+    text: Do you want to display the header image?
+```
+
+## In templates/snippets
+
+A checkbox field stores either 1 or 0 in a content text file. You can work with this in your templates in two ways:
+
+```php
+<?php if($page->myCheckboxField() == '1'): ?>
+<!-- show something here -->
+<?php endif ?>
+```
+
+…or with the new bool field method:
+
+```php
+<?php if($page->myCheckboxField()->bool()): ?>
+<!-- show something here -->
+<?php endif ?>
+```
+
+<!-- checkbox field example -->

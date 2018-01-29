@@ -1,0 +1,144 @@
+Title: Thumbnails
+
+----
+
+Description: Learn how to create resized and cropped images in your templates on the fly.
+
+----
+
+Text:
+
+Kirby's built-in thumbnail class lets you resize and crop any image from your content folder on the fly. 
+
+## The thumb function
+
+Any image in your content folder can be passed to Kirby's `thumb()` function, which is available in all templates, snippets, controllers and plugin files. Image objects also have a `$image->thumb()` method that works the same way.
+
+### Example:
+
+```php
+echo thumb($page->image('cover.jpg'), array('width' => 300));
+
+// or
+echo $page->image('cover.jpg')->thumb(array('width' => 300));
+```
+
+
+## Resizing images
+
+### By width
+
+```php
+echo thumb($image, array('width' => 300));
+```
+
+### By height
+
+```php
+echo thumb($image, array('height' => 300));
+```
+
+### By width and height
+
+```php
+echo thumb($image, array('width' => 300, 'height' => 200));
+```
+
+<since v="2.2">
+#### Shorthand
+
+Since Kirby Version 2.2, you can also use the shorthand `resize()` method. Checkout the Cheat Sheet at http://getkirby.com/docs/cheatsheet/file/resize
+</since>
+
+## Cropping images
+
+### Squares
+
+If you specify just the width, the thumb function will crop the image into a 300 x 300 square.
+
+```php
+echo thumb($image, array('width' => 300, 'crop' => true));
+```
+
+### By width and height
+
+```php
+echo thumb($image, array('width' => 300, 'height' => 400, 'crop' => true));
+```
+
+<since v="2.2">
+#### Shorthand
+
+Since Kirby version 2.2, you can also use the shorthand `crop()` method. Check out the Cheat Sheet at http://getkirby.com/docs/cheatsheet/file/crop
+</since>
+
+## Other thumb options
+
+### Setting the quality
+
+```php
+echo thumb($image, array('width' => 300, 'quality' => 80));
+```
+
+### Blurring
+
+```php
+echo thumb($image, array('width' => 300, 'blur' => true));
+```
+
+### Grayscale
+
+```php
+echo thumb($image, array('width' => 300, 'grayscale' => true));
+```
+
+<since v="2.5.3">
+## Thumb presets
+
+You can globally define thumb presets in your config file. This is useful if you need the same thumb sizes in different places of the site or if you want to pre-define sizes for responsive images.
+
+```php
+// define the thumb presets in site/config/config.php
+c::set('thumbs.presets', [
+  'default' => ['width' => 300, 'quality' => 80],
+  'blurred' => ['width' => 300, 'quality' => 80, 'blur' => true],
+]);
+
+// using the presets
+echo thumb($image, 'default');
+echo $image->thumb('blurred');
+
+// the "default" preset is used if no params are passed at all
+echo thumb($image);
+echo $image->thumb();
+```
+</since>
+
+## Using thumb class methods
+
+You can either echo the `thumb()` result to generate the thumbnail and auto-create an HTML image tag for it. But you can also access a set of methods of the thumbnail class instead:
+
+```php
+echo thumb($image, array('width' => 400, 'height' => 250))->url();
+// return width of the thumb
+echo thumb($image, array('width' => 400, 'height' => 250))->width();
+// return height of the thumb
+echo thumb($image, array('width' => 400, 'height' => 250))->height();
+// return file size of the thumb
+echo thumb($image, array('width' => 400, 'height' => 250))->niceSize();
+```
+
+The `thumb()` method returns a Kirby Media object. For a full set of available options, please check out the (link: docs/toolkit/api#media text: Media object docs). 
+
+<since v="2.3">
+## Thumbs for files outside the content folder
+
+The `thumb()` function expects a Kirby Media object in order to work correctly. Images inside the content folder, fetched by the Kirby API are extended Media objects by default, so you don't have to care about anything when using them. But if you want to pass your own image files from outside the content folder, you need to convert them to a so-called Asset object first, which is fortunately very easy to do: 
+
+```php
+// pass a relative URI from the root of your site
+$myimage = new Asset('assets/images/myimage.jpg');
+
+echo thumb($myimage, array('width' => 300));
+```
+</since>

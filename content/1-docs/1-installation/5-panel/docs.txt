@@ -1,0 +1,63 @@
+Title: Installing the panel
+
+----
+
+Description: Learn how to finalize the Panel installation by creating your first account and fixing possible installation issues.
+
+----
+
+Text:
+
+The panel is included in Kirby's starterkit and boilerplate. The application is located on your server in the **/panel** folder. Please read the installation guide if the panel folder does not exist yet.
+
+## Rename panel folder
+Since version 2.2.0 you can rename the panel folder to a custom name. To make this work, rename the panel folder and then modify your rewrite rules in the .htaccess file. Let's suppose you have renamed the panel folder to "controlpanel", then you need to change your .htaccess file like this:
+
+```
+//default panel folder
+# make panel links work
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^panel/(.*) panel/index.php [L]
+
+//custom panel folder called controlpanel
+# make panel links work
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^controlpanel/(.*) controlpanel/index.php [L]
+```
+You can now access the panel under `http://yourdomain.com/controlpanel`.
+
+## Running the installer
+
+
+<since v="2.3.0">
+**Important**:
+
+For security reasons, the Panel installer can only be run on localhost by default. If you want to run the installer on a remote server, you need to set a config option in your `config.php`:
+
+```
+c::set('panel.install', true);
+```
+
+**Please make sure to remove this line again after you have successfully created your first Panel user.**
+</since>
+
+
+Visit `http://yourdomain.com/panel` to start Kirby's installer. It will check for any issues with your installation.
+
+### Possible issues
+
+1. Make sure that the content folder and all subfolders and files are writable
+2. Make sure the /thumbs folder exists and is writable
+3. Make sure the /site/accounts folder exists and is writable
+
+Once all those checks have passed, the installer will jump to the user signup form.
+
+## Creating your first account
+
+(image: panel-installation.png)
+
+Fill in all fields of the signup form to create the first user account. Once the account has been created the panel will take you to the login page, where you can sign in with your newly created username and password.
+
+(image: login.png)

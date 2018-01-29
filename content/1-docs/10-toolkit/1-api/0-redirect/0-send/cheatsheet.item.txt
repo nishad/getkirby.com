@@ -1,0 +1,32 @@
+Title: redirect::send
+
+----
+
+Excerpt: Redirects the user to a new URL
+
+----
+
+Call: redirect::send($url = false, $code = 302, $send = true)
+
+----
+
+Return: 
+
+----
+
+Params: - 
+  name: $url
+  type: string
+  text: The URL to redirect to
+- 
+  name: $code
+  type: boolean
+  text: >
+    The HTTP status code, which should be
+    sent (301, 302 or 303)
+- 
+  name: $send
+  type: boolean
+  text: >
+    If true, headers will be sent and
+    redirection will take effect

@@ -1,0 +1,33 @@
+Title: str::unxml
+
+----
+
+Excerpt: Removes all xml entities from a string and convert them to html entities first and remove all html entities afterwards.
+
+----
+
+Call: str::unxml($string)
+
+----
+
+Return: type: string
+text:
+
+----
+
+Params: -
+  name: $string
+  type: string
+  text:
+
+----
+
+Text:
+
+## Example
+
+```php
+<?php
+echo str::unxml('some <em>&#252;ber</em> crazy stuff');
+// output: some &uuml;ber crazy stuff
+```  
